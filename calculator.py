@@ -192,6 +192,24 @@ def standard():
 
 
 
+def programmer():
+    # Clearing Screen
+    widget_list = all_children(root)
+    for item in widget_list:
+        item.pack_forget()
+    
+    # Starting to add buttons and entry on screen
+    screen=Entry(root,textvar=sval,font="lucida 40 bold")
+    screen.pack(fill="x",ipadx=8,pady=10,padx=10)
+
+    optionType = StringVar()
+
+    options = ["Binary", "Decimal", "Octal", "HexaDecimal"]
+    optionType.set(options[1])
+    Selected = OptionMenu(root, optionType, *options)
+    Selected.pack()
+
+
 if __name__ == "__main__":
     root=Tk()
 
@@ -215,7 +233,7 @@ if __name__ == "__main__":
 
     menu1=Menu(Main_Menu,tearoff=0)
     menu1.add_command(label="Standard", command=standard)
-
+    menu1.add_command(label="Programmer", command=programmer)
     menu1.add_separator()
     root.config(menu=Main_Menu)
     Main_Menu.add_cascade(label="File", menu=menu1)
